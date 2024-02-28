@@ -1,5 +1,5 @@
 // 100_sametree_binarytree.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+//Pre-Order traversal
 
 #include <iostream>
 using namespace std;

@@ -41,7 +41,7 @@ int main()
     unique_ptr<derived1> arr = make_unique<derived1>();
     arr->printfunc();
     arr->base1::printfunc();
-    int x = 0;
+     int x = 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
