@@ -42,7 +42,7 @@ public:
         }
         return ans;
     }
-    vector<vector<int>> levelOrder(TreeNode* root)
+    vector<vector<int>> levelOrder2(TreeNode* root)
     {
         queue<TreeNode*> q;
         vector < vector<int>> ans;

@@ -214,6 +214,50 @@ public:
             }
         }
     };
+
+    class LRUCache6
+    {
+    private:
+        int capacity;
+        list<int> keys_list;
+        unordered_map<int, pair<list<int>::iterator, int>> mp;
+    public:
+        LRUCache6(int capacity) : capacity(capacity) {}
+        void moveFront(int key)
+        {
+            keys_list.erase(mp[key].first);
+            keys_list.push_front(key);
+            mp[key].first = keys_list.begin();
+        }
+        int get(int key)
+        {
+            if (mp.find(key) != mp.end())
+            {
+                moveFront(key);
+                return mp[key].second;
+            }
+            else
+                return -1;
+        }
+        void put(int key, int value)
+        {
+            if (mp.find(key) != mp.end())
+            {
+                moveFront(key);
+                mp[key] = make_pair(keys_list.begin(), value);
+            }
+            else
+            {
+                if (mp.size() > capacity)
+                {
+                    mp.erase(keys_list.back());
+                    keys_list.pop_back();
+                }
+                keys_list.push_front(key);
+                mp[key] = make_pair(keys_list.begin(), value);
+            }
+        }
+    };
 };
 
 int main()

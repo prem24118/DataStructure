@@ -33,9 +33,7 @@ private:
         int level;
         int leftmax = util(root->left, res);
         int rightmax = util(root->right, res);
-        cout << "leftmax: " << leftmax << " right max: " << rightmax;
         level = max(leftmax, rightmax) + 1;
-        cout << "level " << level << endl;
         if (level > res.size())
         {
             res.push_back(vector<int>());

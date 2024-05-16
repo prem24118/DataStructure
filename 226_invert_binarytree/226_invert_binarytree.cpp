@@ -1,5 +1,5 @@
 // 226_invert_binarytree.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+//Post order traversal
 
 #include <iostream>
 using namespace std;

@@ -34,23 +34,47 @@ public:
         int ans = util(nums, 0, -1, dp);
         return ans;
     }
-    int util(vector<int>& nums, int index, int prev, vector<vector<int>>& dp)
+    int util(vector<int>& nums, int index, int prev_ind, vector<vector<int>>& dp)
     {
         if (index >= nums.size())
         {
             return 0;
         }
-        if (dp[index][prev+1] != -1)
+        if (dp[index][prev_ind +1] != -1)
         {
-            return dp[index][prev + 1];
+            return dp[index][prev_ind + 1];
         }
-        int notTake = 0 + util(nums, index + 1, prev, dp);
+        int notTake = 0 + util(nums, index + 1, prev_ind, dp);
         int take = 0;
-        if(nums[index] > prev)
+        if(prev_ind == -1 || nums[index] > nums[prev_ind])
         {
-            take = 1 + util(nums, index + 1, nums[index], dp);
+            take = 1 + util(nums, index + 1, index, dp);
         }
-        return dp[index][prev+1] = max(take, notTake);
+        return dp[index][prev_ind +1] = max(take, notTake);
+    }
+/* This method goes from the back, tries to make a dp array where that specific index from the back has longest subsequence
+from its position till the end. first for loop goes back, 2nd for loop goes from which element we are at to the end
+{10, 9, 2, 5, 3, 4} so dp[5] = 1, dp[4] = 1 + 1, dp[3] = 1, dp[2] = 1 + 2, dp [1] = 1, dp[0] = 1
+this statement makes sure you go through all elements in 2nd loop and choose the max dp value if current is smaller than jth position*/
+    int lengthOfLIS3(vector<int>& nums) {
+        int total_val = 0;
+        int maxi = 0;
+        int n = nums.size();
+        vector<int> dp(n, 1);
+        for (int i = n-1; i > 0; i--)
+        {
+            for (int j = i; j < n; j++)
+            {
+                if (nums[i - 1] < nums[j])
+                {
+                    dp[i - 1] = max(dp[i - 1], dp[j] + 1);
+
+                }
+                else
+                    continue;
+            }
+        }
+        return *max_element(dp.begin(), dp.end());
     }
 
     /*int lengthOfLIS3(vector<int>& nums)
@@ -70,8 +94,11 @@ int main()
 {
     std::cout << "Hello World!\n";
     vector<int> numbers{ 10, 9, 2, 5, 3, 7, 101, 18 };
+    vector<int> numbers2{2, 15, 3, 7, 8, 6, 18};
+//    vector<int> numbers2{0, 1, 0, 3, 2, 3};
+//    vector<int> numbers2{10, 9, 2, 5, 3, 4};
     Solution sol;
-    int x = sol.lengthOfLIS2(numbers);
+    int x = sol.lengthOfLIS3(numbers2);
     cout << x;
 }
 

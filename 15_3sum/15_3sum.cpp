@@ -37,6 +37,32 @@ public:
         }
         return answer;
     }
+    vector<vector<int>> sum3(vector<int>&nums, int target)
+    {
+        vector<vector<int>> ans;
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (nums[i] == nums[i + 1])
+                continue;
+            int j = i + 1;
+            int k = nums.size() - 1;
+            while (j < k)
+            {
+                int total_sum = nums[i] + nums[j] + nums[k];
+                if (total_sum == target)
+                {
+                    ans.push_back({ i, j, k });
+                    j++;
+                    k--;
+                }
+                else if (total_sum < target)
+                    j++;
+                else
+                    k--;
+            }
+        }
+        return ans;
+    }
 };
 
 int main()

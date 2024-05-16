@@ -1,5 +1,5 @@
 // 230_kth_smallest_element_binary_search_tree.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+//In-order traversal
 
 #include <iostream>
 using namespace std;

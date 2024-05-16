@@ -14,6 +14,17 @@ public:
     TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 
+class TreeNode2
+{
+public:
+    int val;
+    TreeNode2* left;
+    TreeNode2* right;
+    TreeNode2() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode2(int val) : val(val), left(nullptr), right(nullptr) {}
+    TreeNode2(int val, TreeNode2* left, TreeNode2* right) : val(val), left(left), right(right) {}
+};
+
 //check 104 for similar logic
 class Solution
 {

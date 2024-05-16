@@ -12,7 +12,7 @@ public:
     vector<int> twoSum(vector<int>& nums, int target)
     {
         map<int, int> mp;
-        for (int i = 0; i < nums.size(); ++i)
+         for (int i = 0; i < nums.size(); ++i)
         {
             if (mp.find(target - nums[i]) == mp.end())
                 mp[nums[i]] = i;
@@ -23,6 +23,22 @@ public:
             }
         }
         return vector<int>{ -1, -1};
+    }
+    vector<int> twoSums(vector<int>& nums, int target)
+    {
+        map<int, int> mp;
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (mp.find(target - nums[i]) == mp.end())
+                mp[nums[i]] = i;
+            else
+            {
+                vector<int> v(i, mp[target - nums[i]]);
+                return v;
+            }
+            
+        }
+        return vector<int>(-1, -1);
     }
     vector<int> answer;
     vector<int> twoSum2(vector<int>& nums, int target, int index)
@@ -72,8 +88,8 @@ int main()
     vector<int> vec{ 1, 5, 9, 4, 3 };
     vector<int> res, res2;
     Solution sol;
-    //res = sol.twoSum(vec, 9);
-    res2 = sol.twoSum2(vec, 9, 0);
+    res = sol.twoSum(vec, 9);
+    //res2 = sol.twoSum2(vec, 9, 0);
 
     return 0;
 }

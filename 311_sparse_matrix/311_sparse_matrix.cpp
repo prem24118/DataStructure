@@ -36,6 +36,14 @@ public:
 int main()
 {
     std::cout << "Hello World!\n";
+    vector<vector<int>> v1 { {1, 2, 1},
+        { 3, 4, 3 },
+        { 5 , 6, 5 }};
+    vector<vector<int>> v2 {{3}, { 2 }, { 1 }};
+    Solution sol;
+    vector<vector<int>> v3;
+    v3 = sol.multiply(v1, v2);
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

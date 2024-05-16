@@ -15,6 +15,15 @@ public:
     ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
+class ListNode2
+{
+    int val;
+    ListNode2* next;
+    ListNode2() : val(0), next(nullptr) {}
+    ListNode2(int val) : val(val), next(nullptr) {}
+    ListNode2(int val, ListNode2* next) : val(val), next(next) {}
+};
+
 class Solution
 {
 public:
@@ -43,6 +52,19 @@ public:
                 return true;
             st.insert(dummy);
             dummy = dummy->next;
+        }
+        return false;
+    }
+
+    bool hasCycle3(ListNode* head)
+    {
+        ListNode* fast = head, *slow = head;
+        while (fast != nullptr)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (fast == slow)
+                return true;
         }
         return false;
     }
