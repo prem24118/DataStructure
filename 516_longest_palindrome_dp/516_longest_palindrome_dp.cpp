@@ -57,6 +57,12 @@ public:
             value.push_back(*max_element(dp[i].begin(), dp[i].end()));
         }
         return *max_element(value.begin(), value.end());
+
+        //for (int i = 0; i < s.size(); i++)
+        //{
+        //    value.push_back(*max_element(dp[i].begin(), dp[i].end()));
+        //}
+        //return *max_element(value.begin(), value.end());
     }
     //int longestPanlindromeSubseq(string s)
     //{
