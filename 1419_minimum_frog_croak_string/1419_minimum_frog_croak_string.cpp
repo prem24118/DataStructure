@@ -14,22 +14,32 @@ public:
             if (ch == 'c')
             {
                 frog[ch]++;
+                if (frog[ch] < frog['k'])
+                    return -1;
             }
             if (ch == 'r')
             {
                 frog[ch]++;
+                if (frog[ch] > frog['c'])
+                    return -1;
             }
             if (ch == 'o')
             {
                 frog[ch]++;
+                if (frog[ch] > frog['r'])
+                    return -1;
             }
             if (ch == 'a')
             {
                 frog[ch]++;
+                if (frog[ch] > frog['o'])
+                    return -1;
             }
             if (ch == 'k')
             {
                 frog[ch]++;
+                if (frog[ch] > frog['a'])
+                    return -1;
             }
         }
         int count = frog['c'];
