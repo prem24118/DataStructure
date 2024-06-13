@@ -34,6 +34,7 @@ public:
         int count = 0, maxCount = 0;
         for (auto& m : mp)
         {
+            cout << m.first;
             count += m.second;
             maxCount = max(count, maxCount);
         }
