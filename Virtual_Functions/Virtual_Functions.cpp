@@ -32,7 +32,7 @@ public:
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    //std::cout << "Hello World!\n";
     derived1 der;
     der.printfunc();
     cout << endl;
