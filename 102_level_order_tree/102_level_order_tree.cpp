@@ -65,6 +65,33 @@ public:
         }
         return ans;
     }
+
+    vector<vector<int>> levelOrder3(TreeNode* root)
+    {
+        queue<TreeNode*> q;
+        vector<vector<int>> ans;
+        q.push(root);
+        while (!q.empty())
+        {
+            vector<int> level;
+            int size_ = q.size();
+            for (int i = 0; i < size_; i++)
+            {
+                TreeNode* node = q.front();
+                q.pop();
+                if (node->left != nullptr)
+                {
+                    q.push(node->left);
+                }
+                if (node->right != nullptr)
+                {
+                    q.push(node->right);
+                }
+                level.push_back(node->val);
+            }
+            ans.push_back(level);
+        }
+    }
 };
 
 int main()
