@@ -95,6 +95,35 @@ public:
         }
         return answer;
     }
+
+    string mostCommonWord3(string paragraph, vector<string>& banned)
+    {
+        map<string, int> mp;
+        for (auto elem : paragraph)
+        {
+            if (isalpha(elem))
+                elem = tolower(elem);
+            else
+                elem = ' ';
+        }
+        istringstream iss(paragraph);
+        string words;
+        set<string> banned_set(banned.begin(), banned.end());
+        while (iss >> words)
+        {
+            if (banned_set.find(words) != banned_set.end())
+                continue;
+            else
+            {
+                mp[words]++;
+            }
+        }
+        int count = 0;
+        for (auto elem : mp)
+        {
+            count = max(count, elem.second);
+        }
+    }
 };
 
 int main()
